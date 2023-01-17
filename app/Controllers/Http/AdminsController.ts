@@ -1,9 +1,15 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Blog from 'App/Models/Blog'
+import Karyawan from 'App/Models/Karyawan'
+import Prestasi from 'App/Models/Prestasi'
 import Website from 'App/Models/Website'
 
 export default class AdminsController {
   public async index({ view }: HttpContextContract) {
-    return view.render('admin/home')
+    const data_karyawan = await Karyawan.query().select('*').sum('id as total').groupBy("id")
+    const data_prestasi = await Prestasi.query().select('*').sum('id as total').groupBy("id")
+    const data_blog = await Blog.query().select("*").sum('id as total').groupBy("id")
+    return view.render('admin/home', { data_karyawan: data_karyawan, data_prestasi: data_prestasi, data_blog: data_blog })
   }
 
   public async editWebsite({ view }: HttpContextContract) {
