@@ -42,7 +42,7 @@ export default class PositionsController {
 
   public async update({ request, response, session}: HttpContextContract) {
     const id = request.input('id')
-    const nama_jabatan = request.input('nama_pelajaran')
+    const nama_jabatan = request.input('nama_jabatan')
 
     try {
       const subjects = await Jabatan.findOrFail(id)

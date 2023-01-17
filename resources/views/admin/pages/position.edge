@@ -20,6 +20,13 @@
     <div class="card">
       <!-- <div class="card-header">Data Guru Yayasan</div> -->
       <div class="card-body">
+      
+        @if(flashMessages.has('error'))
+          <div class="alert alert-danger">{{ flashMessages.get('error') }}</div>
+        @endif
+        @if(flashMessages.has('success'))
+          <div class="alert alert-success">{{ flashMessages.get('success') }}</div>
+        @endif
         <table class="table table-striped" id="table1">
           <thead>
             <tr>
@@ -36,11 +43,11 @@
               <td>
                 <div class="row">
                   <div>                 
-                    <a href="/admin/position/{{ k.id }}"class="btn btn-sm btn-info">Edit</a>
+                    <a href="/admin/position/edit/{{ k.id }}"class="btn btn-sm btn-info">Edit</a>
                   </div>
                   <br>
                   <div>                 
-                    <form method="POST" action="{{ route('admin_subjects_delete') }}">
+                    <form method="POST" action="{{ route('admin_position_delete') }}">
                       <input type="hidden" name="id" value="{{ k.id }}">
                       <button class="btn btn-sm btn-danger" type="submit">Hapus</button>
                     </form>
