@@ -62,6 +62,15 @@
             </a>
             <ul class="submenu ">
                 <li 
+                    @if( request.url() == '/admin/blog/category') 
+                        class="submenu-item active">
+                    @else 
+                        class="submenu-item">
+                    @end
+                    
+                    <a href="/admin/position">Data Kategori Blog</a>
+                </li>
+                <li 
                     @if( request.url() == '/admin/position') 
                         class="submenu-item active">
                     @else 
