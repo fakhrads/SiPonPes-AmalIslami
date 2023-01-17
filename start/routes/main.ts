@@ -27,27 +27,28 @@ Route
     Route.post('/blog/category/new', 'BlogCategoriesController.store').as('admin_blog_category_store').middleware('auth')
     Route.get('/blog/category/new', 'BlogCategoriesController.create').as('admin_blog_category_create').middleware('auth')
     Route.get('/blog/category/edit/:category_id', 'BlogCategoriesController.edit').as('admin_blog_category_edit').middleware('auth')
-    
+    Route.post('/blog/category/delete', 'BlogCategoriesController.destroy').as('admin_blog_category_delete').middleware('auth')
+
     Route.get('/position', 'PositionsController.index').as('admin_position').middleware('auth')  
     Route.get('/position/new', 'PositionsController.create').as('admin_position_create').middleware('auth')    
     Route.post('/position/new/store', 'PositionsController.store').as('admin_position_store').middleware('auth')    
     Route.post('/position/delete', 'PositionsController.destroy').as('admin_position_delete').middleware('auth')    
     Route.get('/position/edit/:id', 'PositionsController.edit').as('admin_position_edit').middleware('auth')    
-    Route.post('/position/edit/update', 'PositionsController.edit').as('admin_position_update').middleware('auth')    
+    Route.post('/position/edit/update', 'PositionsController.update').as('admin_position_update').middleware('auth')    
     
     Route.get('/subjects', 'SubjectsController.index').as('admin_subjects').middleware('auth')  
     Route.get('/subjects/new', 'SubjectsController.create').as('admin_subjects_create').middleware('auth')    
     Route.post('/subjects/new/store', 'SubjectsController.store').as('admin_subjects_store').middleware('auth')    
     Route.post('/subjects/delete', 'SubjectsController.destroy').as('admin_subjects_delete').middleware('auth')    
     Route.get('/subjects/edit/:id', 'SubjectsController.edit').as('admin_subjects_edit').middleware('auth')    
-    Route.post('/subjects/edit/update', 'SubjectsController.edit').as('admin_subjects_update').middleware('auth')    
+    Route.post('/subjects/edit/update', 'SubjectsController.update').as('admin_subjects_update').middleware('auth')    
     
     Route.get('/event', 'EventsController.index').as('admin_events').middleware('auth')  
     Route.get('/event/new', 'EventsController.create').as('admin_events_create').middleware('auth')    
     Route.post('/event/new/store', 'EventsController.store').as('admin_events_store').middleware('auth')    
     Route.post('/event/delete', 'EventsController.destroy').as('admin_events_delete').middleware('auth')    
     Route.get('/event/edit/:id', 'EventsController.edit').as('admin_events_edit').middleware('auth')    
-    Route.post('/event/edit/update', 'EventsController.edit').as('admin_events_update').middleware('auth')    
+    Route.post('/event/edit/update', 'EventsController.update').as('admin_events_update').middleware('auth')    
 
     Route.get('/blog', 'BlogsController.index').as('admin_blog').middleware('auth')  
     Route.get('/blog/new', 'BlogsController.create').as('admin_blog_create').middleware('auth')    
