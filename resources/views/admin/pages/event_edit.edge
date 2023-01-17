@@ -1,0 +1,68 @@
+@layout('layout/base')
+
+@set('title','Amal Islami Dashboard')
+@set('pageHeader','Edit Data Event')
+
+@section('custom-css')
+
+@end
+
+@section('content')
+<section id="multiple-column-form">
+    <div class="row match-height">
+      <div class="col-12">
+        <div class="py">
+            <a href="/admin/event" class="btn btn-primary">Kembali</a>
+        </div>
+        <br/>
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              @if(flashMessages.has('error'))
+                <div class="alert alert-danger">{{ flashMessages.get('error') }}</div>
+              @endif
+              @if(flashMessages.has('success'))
+                <div class="alert alert-success">{{ flashMessages.get('success') }}</div>
+              @endif
+              <form class="form" method="POST" action="{{ route('admin_events_update') }}">
+                <div class="row">
+                  <input type="hidden" name="id" value="{{ data.id }}">
+                  <div class="col-md-12 col-12">
+                    <div class="form-group">
+                      <label for="first-name-column">Nama Event</label>
+                      <input type="text" id="first-name-column" class="form-control" value="{{ data.judul }}" name="nama_event" required>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-12">
+                    <div class="form-group">
+                      <label for="first-name-column">Tanggal Mulai</label>
+                      <input type="date" id="first-name-column" class="form-control" placeholder="Tanggal Mulai" name="tanggal_mulai" required>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-12">
+                    <div class="form-group">
+                      <label for="first-name-column">Tanggal Selesai</label>
+                      <input type="date" id="first-name-column" class="form-control" placeholder="Tanggal Selesai" name="tanggal_selesai" required>
+                    </div>
+                  </div>
+                  <div class="col-12 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary me-1 mb-1">
+                      Submit
+                    </button>
+                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">
+                      Reset
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+@end
+
+@section('custom-js')
+
+@end

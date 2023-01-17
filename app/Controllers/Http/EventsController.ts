@@ -34,8 +34,8 @@ export default class EventsController {
     const id = request.param('id')
     
     try {
-      const position = await Event.query().where('id',id).firstOrFail()
-      return view.render('admin/pages/event_edit', {data: position})
+      const event = await Event.query().where('id',id).firstOrFail()
+      return view.render('admin/pages/event_edit', {data: event})
     } catch(e) {
       session.flash('errors', e)
       //return response.json(e)
