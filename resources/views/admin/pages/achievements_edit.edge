@@ -13,20 +13,31 @@
       <div class="col-12">
         <div class="card">
           <div class="card-content">
+            @if(flashMessages.has('error'))
+              <div class="alert alert-danger">{{ flashMessages.get('error') }}</div>
+            @endif
+            @if(flashMessages.has('success'))
+              <div class="alert alert-success">{{ flashMessages.get('success') }}</div>
+            @endif
             <div class="card-body">
-              <form class="form" method="POST" action="{{ route('admin_achievements_store') }}">
+              <form class="form" enctype="multipart/form-data" method="POST" action="{{ route('admin_achievements_update') }}">
                 <div class="row">
+                <input type="hidden" name="id" value="{{ data.id }}">
                   <div class="col-md-6 col-12">
                     <div class="form-group">
                       <label for="last-name-column">Judul</label>
-                      <input type="text" id="last-name-column" class="form-control" value="{{ data.judul }}" name="judul">
+                      <input type="text" id="last-name-column" class="form-control" value="{{ data.title }}" placeholder="Judul Prestasi" name="judul">
                     </div>
                   </div>
                   <div class="col-md-6 col-12">
                     <div class="form-group">
                       <label for="city-column">Deskripsi</label>
-                      <textarea type="text" id="city-column" class="form-control" placeholder="Nama Belakang" name="deskripsi">
+                      <textarea type="text" id="city-column" class="form-control" value="{{ data.description }}" placeholder="Deskripsi" name="deskripsi">{{ data.description }}</textarea>
                     </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Thumbnail</label>
+                    <input name="photo" class="form-control" type="file" id="formFile">
                   </div>
                   <div class="col-12 d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary me-1 mb-1">

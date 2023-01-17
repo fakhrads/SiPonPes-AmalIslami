@@ -10,8 +10,10 @@ Route
     Route.post('/website/update', 'AdminsController.update').as('admin_website_update').middleware('auth')
 
     Route.get('/prestasi', 'AchievementsController.index').as('admin_achievements').middleware('auth')
+    Route.get('/prestasi/edit/:id', 'AchievementsController.edit').as('admin_achievements_edit').middleware('auth')
     Route.get('/prestasi/new', 'AchievementsController.create').as('admin_achievements_new').middleware('auth')
     Route.post('/prestasi/new', 'AchievementsController.store').as('admin_achievements_store').middleware('auth')
+    Route.post('/prestasi/update', 'AchievementsController.update').as('admin_achievements_update').middleware('auth')
     Route.post('/prestasi/destroy', 'AchievementsController.destroy').as('admin_achievements_destroy').middleware('auth')
 
     Route.get('/karyawan', 'StaffController.index').as('admin_staff').middleware('auth')

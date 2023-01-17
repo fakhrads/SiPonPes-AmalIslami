@@ -8,23 +8,22 @@
 
 @section('content')
 
-
-
     <section class="bg-white dark:bg-gray-900">
         <article class="max-w-2xl px-6 py-24 mx-auto space-y-12 dark:bg-gray-800 dark:text-gray-50">
             <div class="w-full mx-auto space-y-4 text-center">
-                <p class="text-xs font-semibold tracking-wider uppercase">#TailwindCSS</p>
-                <h1 class="text-4xl font-bold leading-tight md:text-5xl">Interdum et malesuada fames ac ante ipsum primis in faucibus?</h1>
+                <p class="text-xs font-semibold tracking-wider uppercase">#{{ data.category_name }}</p>
+                <h1 class="text-4xl font-bold leading-tight md:text-5xl">{{ data.judul }}</h1>
                 <p class="text-sm dark:text-gray-400">by
                     <a rel="noopener noreferrer" href="#" target="_blank" class="underline dark:text-violet-400">
-                        <span itemprop="name">Leroy Jenkins</span>
+                        <span itemprop="name">Admin</span>
                     </a>on
-                    <time datetime="2021-02-12 15:34:18-0200">Feb 12th 2021</time>
+                    <time datetime="2021-02-12 15:34:18-0200">{{ data.created_at }}</time>
                 </p>
             </div>
             <div class="dark:text-gray-100">
-                <img src="http://localhost:3333/ketum.jpg">
-                <p>Insert the actual text content here...</p>
+                <img class="rounded-xl" src="/uploads/photo_blog/{{ data.photo_path }}">
+                <br/>
+                <p>{{ data.content }}</p>
             </div>
         </article>
     </section>
