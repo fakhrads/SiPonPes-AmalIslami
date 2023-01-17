@@ -42,7 +42,7 @@ export default class BlogsController {
 
   public async show({}: HttpContextContract) {}
 
-  public async edit({ request, session, response}: HttpContextContract) {
+  public async update({ request, session, response}: HttpContextContract) {
     const id = request.input('id')
     const title = request.input('title')
     const content = request.input('content')
@@ -76,7 +76,12 @@ export default class BlogsController {
     }
   }
 
-  public async update({}: HttpContextContract) {}
+  public async edit({ request, view }: HttpContextContract) {
+    const id = request.param('id')
+    const data_blog = await Blog.findOrFail(id)
+    const data_category = await BlogCategory.all()
+    return view.render('admin/pages/blog_edit', { data: data_blog, data_category: data_category })
+  }
   public async destroy({ request, session, response}: HttpContextContract) {    
     const id = request.input('id')
     try {

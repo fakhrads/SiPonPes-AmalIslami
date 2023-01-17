@@ -1,0 +1,74 @@
+@layout('layout/base')
+
+@set('title','Amal Islami Dashboard')
+@set('pageHeader','Edit Blog')
+
+@section('custom-css')
+
+@end
+
+@section('content')
+<section id="multiple-column-form">
+    <div class="row match-height">
+      <div class="col-12">
+        <div class="py">
+            <a href="/admin/blog" class="btn btn-primary">Kembali</a>
+        </div>
+        <br/>
+        @if(flashMessages.has('error'))
+          <div class="alert alert-danger">{{ flashMessages.get('error') }}</div>
+        @endif
+        @if(flashMessages.has('success'))
+          <div class="alert alert-success">{{ flashMessages.get('success') }}</div>
+        @endif
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <form class="form" method="POST" enctype="multipart/form-data" action="{{ route('admin_blog_store') }}">
+                <div class="row">
+                  <div class="col-md-6 col-12">
+                    <div class="form-group">
+                      <label for="first-name-column">Judul Blog</label>
+                      <input type="text" id="first-name-column" class="form-control" value="{{ data.judul }}" name="title">
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <h6>Kategori</h6>
+                    <fieldset class="form-group">
+                      <select class="form-select" id="basicSelect" name="category_id">
+                        <option value="{{ data.id }}">Pilih Kategori...</option>
+                        @each(item in data_category)
+                          <option value="{{ item.id }}">{{ item.category_name }}</option>
+                        @end
+                      </select>
+                    </fieldset>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Isi konten blog</label>
+                    <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3">{{ data.content }}</textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Thumbnail</label>
+                    <input name="photo" class="form-control" type="file" id="formFile" required>
+                  </div>
+                  <div class="col-12 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary me-1 mb-1">
+                      Submit
+                    </button>
+                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">
+                      Reset
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+@end
+
+@section('custom-js')
+
+@end

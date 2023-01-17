@@ -40,7 +40,7 @@
                 <td>{{ item.judul}}</td>
                 <td>{{ item.category_id}}</td>
                 <td>
-                  <a href="/blog/edit/{{ item.id }}" class="badge bg-info">Edit</a>
+                  <a href="/admin/blog/edit/{{ item.id }}" class="badge bg-info">Edit</a>
                   <br>
                   <div>                        
                     <form method="POST" action="{{ route('admin_blog_delete') }}">

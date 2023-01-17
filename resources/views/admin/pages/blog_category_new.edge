@@ -1,7 +1,7 @@
 @layout('layout/base')
 
 @set('title','Amal Islami Dashboard')
-@set('pageHeader','Pendaftaran Guru Baru')
+@set('pageHeader','Tambah Data Kategori Blog')
 
 @section('custom-css')
 
@@ -18,6 +18,12 @@
         <div class="card">
           <div class="card-content">
             <div class="card-body">
+              @if(flashMessages.has('error'))
+                <div class="alert alert-danger">{{ flashMessages.get('error') }}</div>
+              @endif
+              @if(flashMessages.has('success'))
+                <div class="alert alert-success">{{ flashMessages.get('success') }}</div>
+              @endif
               <form class="form" method="POST" action="{{ route('admin_blog_category_store') }}">
                 <div class="row">
                   <div class="col-md-6 col-12">
