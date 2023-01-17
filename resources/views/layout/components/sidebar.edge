@@ -62,15 +62,6 @@
             </a>
             <ul class="submenu ">
                 <li 
-                    @if( request.url() == '/admin/blog/category') 
-                        class="submenu-item active">
-                    @else 
-                        class="submenu-item">
-                    @end
-                    
-                    <a href="/admin/blog/category">Data Kategori Blog</a>
-                </li>
-                <li 
                     @if( request.url() == '/admin/position') 
                         class="submenu-item active">
                     @else 
@@ -101,7 +92,7 @@
             @end
             <a href="/admin/gallery" class='sidebar-link'>
                 <i class="bi bi-image"></i>
-                <span>Manajemen Kalender Akademik</span>
+                <span>Manajemen Galeri</span>
             </a>
         </li>
 
