@@ -4,6 +4,7 @@ Route
   .group(() => {
     Route.get('/login', 'UsersController.index').as('admin_login')
     Route.post('/login', 'UsersController.login').as('admin_login_proccess')
+    Route.get('/logout', 'UsersController.logout').as('admin_logout_proccess')
     Route.get('/dashboard', 'AdminsController.index').as('admin_dashboard').middleware('auth')
 
     Route.get('/website', 'AdminsController.editWebsite').as('admin_website').middleware('auth')
