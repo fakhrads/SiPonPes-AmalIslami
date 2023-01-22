@@ -20,12 +20,14 @@ Route
     Route.get('/karyawan', 'StaffController.index').as('admin_staff').middleware('auth')
     Route.get('/karyawan/new', 'StaffController.create').as('admin_staff_new').middleware('auth')
     Route.post('/karyawan/store', 'StaffController.store').as('admin_staff_store').middleware('auth')
-    Route.get('/karyawan/edit/:nip', 'StaffController.edit').as('admin_staff_edit').middleware('auth')
+    Route.get('/karyawan/edit/:id', 'StaffController.edit').as('admin_staff_edit').middleware('auth')
     Route.post('/karyawan/delete', 'StaffController.destroy').as('admin_staff_delete').middleware('auth')
+    Route.post('/karyawan/update', 'StaffController.update').as('admin_staff_update').middleware('auth')
 
     Route.get('/blog/category/', 'BlogCategoriesController.index').as('admin_blog_category').middleware('auth')
     Route.post('/blog/category/new', 'BlogCategoriesController.store').as('admin_blog_category_store').middleware('auth')
     Route.get('/blog/category/new', 'BlogCategoriesController.create').as('admin_blog_category_create').middleware('auth')
+    Route.post('/blog/category/update', 'BlogCategoriesController.update').as('admin_blog_category_update').middleware('auth')
     Route.get('/blog/category/edit/:category_id', 'BlogCategoriesController.edit').as('admin_blog_category_edit').middleware('auth')
     Route.post('/blog/category/delete', 'BlogCategoriesController.destroy').as('admin_blog_category_delete').middleware('auth')
 

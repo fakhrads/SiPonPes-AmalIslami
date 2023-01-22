@@ -1,6 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database'
-import Blog from 'App/Models/Blog'
 import Event from 'App/Models/Event'
 import Prestasi from 'App/Models/Prestasi'
 import Website from 'App/Models/Website'
@@ -8,7 +7,11 @@ export default class WebsitesController {
 
   public async index({ view }: HttpContextContract) {
     const data = await Website.findOrFail(1)
-    const data_blog = await Blog.query().select('*').limit(4)
+    const data_blog = await Database
+                      .from('blogs')
+                      .select('blogs.id','blogs.photo_path','blogs.judul','blogs.content','blogs.created_at','blog_categories.category_name')
+                      .innerJoin('blog_categories','blogs.category_id','blog_categories.id')
+                      .limit(4)
     return view.render('home/welcome', { data: data, data_blog: data_blog })
   }
 

@@ -42,10 +42,11 @@ export default class BlogCategoriesController {
   }
 
   public async update({ request, session, response }: HttpContextContract) {
+    const id = request.input('id')
     const category_name = request.input('category_name')
 
     try {
-      const category = await BlogCategory.findOrFail(category_name)
+      const category = await BlogCategory.findOrFail(id)
 
       category.category_name = category_name
 

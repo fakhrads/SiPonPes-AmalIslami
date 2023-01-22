@@ -15,7 +15,7 @@
           <div class="card shadow-2-strong" style="border-radius: 1rem;">
             <div class="card-body p-5">
               <form method="POST" action="{{ route('admin_login_proccess') }}">
-              <h3 class="mb-5">Sign in</h3>
+              <h3 class="mb-5">Login</h3>
               @if(flashMessages.has('error'))
                 <div class="alert alert-danger">{{ flashMessages.get('error') }}</div>
               @endif

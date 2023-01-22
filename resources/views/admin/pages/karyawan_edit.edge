@@ -11,6 +11,10 @@
 <section id="multiple-column-form">
     <div class="row match-height">
       <div class="col-12">
+        <div class="py">
+            <a href="/admin/karyawan" class="btn btn-primary">Kembali</a>
+        </div>
+        <br/>
         <div class="card">
           <div class="card-content">
             <div class="card-body">
@@ -47,19 +51,29 @@
                   <div class="col-md-12 col-12">
                     <div class="form-group">
                       <label for="first-name-column">Nama Depan</label>
-                      <input type="text" id="first-name-column" class="form-control" placeholder="Nama Depan" name="nama_depan">
+                      <input type="text" id="first-name-column" class="form-control" value="{{ data.nama_depan }}" name="nama_depan">
                     </div>
                   </div>
                   <div class="col-md-12 col-12">
                     <div class="form-group">
                       <label for="first-name-column">Nama Belakang</label>
-                      <input type="text" id="first-name-column" class="form-control" placeholder="Nama Belakang" name="nama_belakang">
+                      <input type="text" id="first-name-column" class="form-control" value="{{ data.nama_belakang }}" name="nama_belakang">
                     </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <h6>Jenis Kelamin</h6>
+                    <fieldset class="form-group">
+                      <select class="form-select" name="jenis_kelamin" id="basicSelect">
+                        <option>Pilih Sesuatu...</option>
+                        <option value="Laki - Laki">Laki - Laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                      </select>
+                    </fieldset>
                   </div>
                   <div class="col-md-12 col-12">
                     <div class="form-group">
-                      <label for="first-name-column">Jenis Kelamin</label>
-                      <input type="text" id="first-name-column" class="form-control" placeholder="Nama Belakang" name="nama_belakang">
+                      <label for="formFile" class="form-label">Foto</label>
+                      <input class="form-control" name="gambar" type="file" id="formFile">
                     </div>
                   </div>
                   <div class="col-12 d-flex justify-content-end">

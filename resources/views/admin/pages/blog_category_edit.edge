@@ -11,15 +11,26 @@
 <section id="multiple-column-form">
     <div class="row match-height">
       <div class="col-12">
+        <div class="py">
+            <a href="/admin/blog/category" class="btn btn-primary">Kembali</a>
+        </div>
+        <br/>
         <div class="card">
           <div class="card-content">
             <div class="card-body">
+              @if(flashMessages.has('error'))
+                <div class="alert alert-danger">{{ flashMessages.get('error') }}</div>
+              @endif
+              @if(flashMessages.has('success'))
+                <div class="alert alert-success">{{ flashMessages.get('success') }}</div>
+              @endif
               <form class="form" method="POST" action="{{ route('admin_blog_category_update') }}">
                 <div class="row">
+                <input type="hidden" name="id" value="{{ data.id }}">
                   <div class="col-md-6 col-12">
                     <div class="form-group">
                       <label for="first-name-column">Nama Kategori</label>
-                      <input type="text" id="first-name-column" class="form-control" value="{{ category.category_name }}" name="category_name">
+                      <input type="text" id="first-name-column" class="form-control" value="{{ data.category_name }}" name="category_name">
                     </div>
                   </div>
                   <div class="col-12 d-flex justify-content-end">

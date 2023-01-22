@@ -59,8 +59,8 @@ export default class StaffController {
     const id = request.param('id')
     
     try {
-      const position = await Karyawan.query().where('id',id).firstOrFail()
-      return view.render('admin/pages/karyawan_edit', {data: position})
+      const karyawan = await Karyawan.query().where('id',id).firstOrFail()
+      return view.render('admin/pages/karyawan_edit', {data: karyawan})
     } catch(e) {
       session.flash('errors', e)
       //return response.json(e)
