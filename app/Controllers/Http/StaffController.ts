@@ -60,7 +60,9 @@ export default class StaffController {
     
     try {
       const karyawan = await Karyawan.query().where('id',id).firstOrFail()
-      return view.render('admin/pages/karyawan_edit', {data: karyawan})
+      const data_jabatan = await Jabatan.all()
+      const data_pelajaran = await MataPelajaran.all()
+      return view.render('admin/pages/karyawan_edit', {data: karyawan, data_jabatan: data_jabatan, data_pelajaran: data_pelajaran})
     } catch(e) {
       session.flash('errors', e)
       //return response.json(e)
