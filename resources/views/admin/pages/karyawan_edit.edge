@@ -30,7 +30,7 @@
                     <h6>Jabatan</h6>
                     <fieldset class="form-group">
                       <select class="form-select" id="basicSelect">
-                        <option>Pilih Sesuatu...</option>
+                        <option value="{{ data.j_id }}">{{ data.nama_jabatan }}</option>
                         @each(item in data_jabatan)
                           <option value="{{ item.id }}">{{ item.nama_jabatan }}</option>
                         @end
@@ -41,7 +41,7 @@
                     <h6>Mata Pelajaran Utama</h6>
                     <fieldset class="form-group">
                       <select class="form-select" id="basicSelect">
-                        <option>Pilih Sesuatu...</option>
+                        <option value="{{ data.m_id }}">{{ data.nama_pelajaran }}</option>
                         @each(items in data_pelajaran)
                           <option value="{{ items.id }}">{{ items.nama_pelajaran }}</option>
                         @end

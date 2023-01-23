@@ -59,7 +59,12 @@ export default class StaffController {
     const id = request.param('id')
     
     try {
-      const karyawan = await Karyawan.query().where('id',id).firstOrFail()
+      const karyawan = await Database
+                      .from('karyawan')
+                      .select('karyawan.id','karyawan.nama_depan','karyawan.nama_belakang','karyawan.jenis_kelamin','jabatan.id as j_id','mata_pelajaran.id as m_id','jabatan.nama_jabatan','mata_pelajarans.nama_pelajaran')
+                      .innerJoin('jabatan','karyawan.jabatan_id','jabatan.id')
+                      .innerJoin('mata_pelajarans','karyawan.mata_pelajaran_id','mata_pelajarans.id')
+                      .where('id',id).firstOrFail()
       const data_jabatan = await Jabatan.all()
       const data_pelajaran = await MataPelajaran.all()
       return view.render('admin/pages/karyawan_edit', {data: karyawan, data_jabatan: data_jabatan, data_pelajaran: data_pelajaran})
