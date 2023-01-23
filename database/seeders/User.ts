@@ -8,19 +8,19 @@ export default class extends BaseSeeder {
         nama: 'Fakhri Adi Saputra',
         email: 'fakhrads.id@gmail.com',
         password: 'secret',
-        level: "superadmin",
+        level: "Operator",
       },
       {
         nama: 'Fauzi Fikrinullah',
         email: 'fauzifikrinullah@gmail.com',
         password: 'secret',
-        level: "admin",
+        level: "TU",
       },
       {
         nama: 'Ji Kun',
         email: 'jikun@gmail.com',
         password: 'secret',
-        level: "admin",
+        level: "TU",
       },
     ])
   }
