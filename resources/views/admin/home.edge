@@ -8,6 +8,12 @@
 @endsection
 
 @section('content')
+              @if(flashMessages.has('error'))
+                <div class="alert alert-danger">{{ flashMessages.get('error') }}</div>
+              @endif
+              @if(flashMessages.has('success'))
+                <div class="alert alert-success">{{ flashMessages.get('success') }}</div>
+              @endif
   <div class="row">
                 <div class="col-6 col-lg-4 col-md-6">
                   <div class="card">
