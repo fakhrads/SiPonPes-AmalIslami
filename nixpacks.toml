@@ -4,7 +4,7 @@
 nixPkgs = ['nodejs-18_x']
 
 [phases.install]
-cmds = ['yarn install']
+cmds = ['npm install -g yarn','yarn install']
 
 [phases.build]
 cmds = ['yarn build']
