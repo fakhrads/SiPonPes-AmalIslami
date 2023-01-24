@@ -10,4 +10,4 @@ cmds = ['yarn install']
 cmds = ['yarn build']
 
 [start]
-cmd = 'cd build && node server.js'
+cmd = 'cd build && yarn install --production && node server.js'
