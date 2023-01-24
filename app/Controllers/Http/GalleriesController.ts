@@ -59,16 +59,16 @@ export default class GalleriesController {
         const data_gallery = await Gallery.findOrFail(id)
         data_gallery.nama_kegiatan = title
         data_gallery.deskripsi = content
-        data_gallery.photo_path = photo_path.clientName
+        data_gallery.photo_path = photo_path.fileName!
         data_gallery.save()
-        session.flash('success','Data berhasil ditambah!')
+        session.flash('success','Data berhasil dirubah!')
         response.redirect().back()
       } else {
         const data_gallery = await Gallery.findOrFail(id)
         data_gallery.nama_kegiatan = title
         data_gallery.deskripsi = content
         data_gallery.save()
-        session.flash('success','Data berhasil ditambah!')
+        session.flash('success','Data berhasil dirubah!')
         response.redirect().back()
       }
     } catch (e) {
