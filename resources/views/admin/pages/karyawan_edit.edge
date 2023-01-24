@@ -25,7 +25,8 @@
                 <div class="alert alert-success">{{ flashMessages.get('success') }}</div>
               @endif
               <form class="form" method="POST" action="{{ route('admin_staff_update') }}">
-                <div class="row">
+                  <input type="hidden" name="id" value="{{ data.k_id }}">
+                  <div class="row">
                   <div class="col-md-6 mb-4">
                     <h6>Jabatan</h6>
                     <fieldset class="form-group">

@@ -20,7 +20,7 @@ export default class StaffController {
     return view.render('admin/pages/karyawan_new', {data_jabatan:data_jabatan, data_pelajaran:data_pelajaran})
   }
 
-  public async store({ request, response, session }: HttpContextContract) {
+  public async store({ request, response, session, auth }: HttpContextContract) {
     const id_matapelajaran = request.input('id_matapelajaran')
     const id_jabatan = request.input('id_jabatan')
     const nama_depan = request.input('nama_depan')
@@ -31,13 +31,11 @@ export default class StaffController {
       extnames: ['jpg', 'png', 'gif'],
     })!
 
-    if (photo_path) {
-      await photo_path.moveToDisk('photo_staff')
-    }
 
     try {
+      await photo_path.moveToDisk('photo_staff')
       await Karyawan.create({
-        users_id: 1,
+        users_id: auth.use('web').user!.id,
         jabatan_id: id_jabatan,
         mata_pelajaran_id: id_matapelajaran,
         nama_depan: nama_depan,
@@ -61,14 +59,15 @@ export default class StaffController {
     try {
       const karyawan = await Database
                       .from('karyawan')
-                      .select('karyawan.id','karyawan.nama_depan','karyawan.nama_belakang','karyawan.jenis_kelamin','jabatan.id as j_id','mata_pelajaran.id as m_id','jabatan.nama_jabatan','mata_pelajarans.nama_pelajaran')
+                      .select('karyawan.id as k_id','karyawan.nama_depan','karyawan.nama_belakang','karyawan.jenis_kelamin','jabatan.id as j_id','mata_pelajarans.id as m_id','jabatan.nama_jabatan','mata_pelajarans.nama_pelajaran')
                       .innerJoin('jabatan','karyawan.jabatan_id','jabatan.id')
                       .innerJoin('mata_pelajarans','karyawan.mata_pelajaran_id','mata_pelajarans.id')
-                      .where('id',id).firstOrFail()
+                      .where('karyawan.id',id).firstOrFail()
       const data_jabatan = await Jabatan.all()
       const data_pelajaran = await MataPelajaran.all()
       return view.render('admin/pages/karyawan_edit', {data: karyawan, data_jabatan: data_jabatan, data_pelajaran: data_pelajaran})
     } catch(e) {
+      console.log(e)
       session.flash('errors', e)
       //return response.json(e)
       return response.redirect().back()
@@ -90,39 +89,39 @@ export default class StaffController {
 
 
     try {
-      
+      if (photo_path) {
+        await photo_path.moveToDisk('photo_staff')
+        const karyawan = await Karyawan.findOrFail(id)
+        console.log(karyawan)
 
-    if (photo_path) {
-      await photo_path.moveToDisk('photo_staff')
-      const karyawan = await Karyawan.findOrFail(id)
+        karyawan.jabatan_id = id_jabatan
+        karyawan.mata_pelajaran_id = id_matapelajaran
+        karyawan.nama_depan = nama_depan
+        karyawan.nama_belakang = nama_belakang
+        karyawan.jenis_kelamin = jenis_kelamin
+        karyawan.photo_path = photo_path.fileName!
 
-      karyawan.jabatan_id = id_jabatan
-      karyawan.mata_pelajaran_id = id_matapelajaran
-      karyawan.nama_depan = nama_depan
-      karyawan.nama_belakang = nama_belakang
-      karyawan.jenis_kelamin = jenis_kelamin
-      karyawan.photo_path = photo_path.fileName!
+        await karyawan.save()
 
-      await karyawan.save()
+        session.flash('success', "Data berhasil diubah")
+        return response.redirect().back()
+      } else {
+        const karyawan = await Karyawan.findOrFail(id)
 
-      session.flash('success', "Data berhasil diubah")
-      return response.redirect().back()
-    } else {
-      const karyawan = await Karyawan.findOrFail(id)
+        karyawan.jabatan_id = id_jabatan
+        karyawan.mata_pelajaran_id = id_matapelajaran
+        karyawan.nama_depan = nama_depan
+        karyawan.nama_belakang = nama_belakang
+        karyawan.jenis_kelamin = jenis_kelamin
 
-      karyawan.jabatan_id = id_jabatan
-      karyawan.mata_pelajaran_id = id_matapelajaran
-      karyawan.nama_depan = nama_depan
-      karyawan.nama_belakang = nama_belakang
-      karyawan.jenis_kelamin = jenis_kelamin
+        await karyawan.save()
 
-      await karyawan.save()
-
-      session.flash('success', "Data berhasil diubah")
-      return response.redirect().back()
-    }
+        session.flash('success', "Data berhasil diubah")
+        return response.redirect().back()
+      }
       
     } catch(e) {
+      console.log(e)
       session.flash('errors', "Data tidak berhasil diubah")
       return response.redirect().back()
     }
