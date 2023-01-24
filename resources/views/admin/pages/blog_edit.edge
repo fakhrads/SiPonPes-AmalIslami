@@ -26,6 +26,7 @@
             <div class="card-body">
               <form class="form" method="POST" enctype="multipart/form-data" action="{{ route('admin_blog_update') }}">
                 <div class="row">
+                <input type="hidden" name="id" value="{{ data.id }}">
                   <div class="col-md-6 col-12">
                     <div class="form-group">
                       <label for="first-name-column">Judul Blog</label>
