@@ -1,0 +1,10 @@
+# nixpacks.toml
+
+[phases.setup]
+nixPkgs = ['nodejs-18_x']
+
+[phases.build]
+cmds = ['yarn build']
+
+[start]
+cmd = 'cd build && yarn install --production && node server.js'
