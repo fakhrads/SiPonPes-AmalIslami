@@ -133,7 +133,7 @@ export default class StaffController {
       const subjects = await Karyawan.findOrFail(id)
       await subjects.delete()
 
-      session.flash('success', "Data berhasil di hapus")
+      session.flash('success', "Data berhasil dihapus")
       return response.redirect().back()
     } catch(e) {
       session.flash('errors', e)

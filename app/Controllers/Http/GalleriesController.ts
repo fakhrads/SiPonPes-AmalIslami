@@ -83,7 +83,7 @@ export default class GalleriesController {
       const data = await Gallery.findOrFail(id)
       await data.delete()
 
-      session.flash('success', "Data berhasil di hapus")
+      session.flash('success', "Data berhasil dihapus")
       return response.redirect().back()
     } catch(e) {
       session.flash('errors', e)

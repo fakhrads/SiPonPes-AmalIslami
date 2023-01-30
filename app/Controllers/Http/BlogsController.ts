@@ -88,7 +88,7 @@ export default class BlogsController {
       const data = await Blog.findOrFail(id)
       await data.delete()
 
-      session.flash('success', "Data berhasil di hapus")
+      session.flash('success', "Data berhasil dihapus")
       return response.redirect().back()
     } catch(e) {
       session.flash('errors', e)

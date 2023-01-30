@@ -19,7 +19,7 @@ export default class BlogCategoriesController {
       await BlogCategory.create({
         category_name: name
       })
-      session.flash('success', 'Data kategori blog berhasil di tambah')
+      session.flash('success', 'Data kategori blog berhasil ditambah')
       return response.redirect().back()
     } catch(e) {
       session.flash('error', e.message)
@@ -66,7 +66,7 @@ export default class BlogCategoriesController {
       const category = await BlogCategory.findOrFail(category_id)
       await category.delete()
       
-      session.flash('success', "Data berhasil di hapus")
+      session.flash('success', "Data berhasil dihapus")
       return response.redirect().back()
     } catch(e) {
       session.flash('errors', e)
