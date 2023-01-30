@@ -26,6 +26,7 @@
               @endif
               <form class="form" method="POST" action="{{ route('admin_subjects_update') }}">
                 <div class="row">
+                <input type="hidden" name="id" value="{{ data.id }}">
                   <div class="col-md-12 col-12">
                     <div class="form-group">
                       <label for="first-name-column">Nama Pelajaran</label>
