@@ -3,21 +3,24 @@ import Jabatan from 'App/Models/Jabatan'
 import Karyawan from 'App/Models/Karyawan'
 import MataPelajaran from 'App/Models/MataPelajaran'
 import Database from '@ioc:Adonis/Lucid/Database'
+import User from 'App/Models/User'
 
 export default class StaffController {
-  public async index({ view }: HttpContextContract) {
+  public async index({ view, auth }: HttpContextContract) {
+    const user = await User.findOrFail(auth.use('web').user!.id)
     const data = await Database
                               .from('karyawan')
                               .select('karyawan.id','karyawan.nama_depan','karyawan.nama_belakang','karyawan.jenis_kelamin','jabatan.nama_jabatan','mata_pelajarans.nama_pelajaran')
                               .innerJoin('jabatan','karyawan.jabatan_id','jabatan.id')
                               .innerJoin('mata_pelajarans','karyawan.mata_pelajaran_id','mata_pelajarans.id')
-    return view.render('admin/pages/karyawan', {data: data})
+    return view.render('admin/pages/karyawan', {user: user, data: data})
   }
 
-  public async create({ view}: HttpContextContract) {
+  public async create({ view, auth }: HttpContextContract) {
+    const user = await User.findOrFail(auth.use('web').user!.id)
     const data_jabatan = await Jabatan.all()
     const data_pelajaran = await MataPelajaran.all()
-    return view.render('admin/pages/karyawan_new', {data_jabatan:data_jabatan, data_pelajaran:data_pelajaran})
+    return view.render('admin/pages/karyawan_new', {user: user, data_jabatan:data_jabatan, data_pelajaran:data_pelajaran})
   }
 
   public async store({ request, response, session, auth }: HttpContextContract) {
@@ -53,7 +56,8 @@ export default class StaffController {
 
   public async show({}: HttpContextContract) {}
 
-  public async edit({ view, request, session, response }: HttpContextContract) {
+  public async edit({ view, request, session, response, auth }: HttpContextContract) {
+    const user = await User.findOrFail(auth.use('web').user!.id)
     const id = request.param('id')
     
     try {
@@ -65,7 +69,7 @@ export default class StaffController {
                       .where('karyawan.id',id).firstOrFail()
       const data_jabatan = await Jabatan.all()
       const data_pelajaran = await MataPelajaran.all()
-      return view.render('admin/pages/karyawan_edit', {data: karyawan, data_jabatan: data_jabatan, data_pelajaran: data_pelajaran})
+      return view.render('admin/pages/karyawan_edit', {user: user, data: karyawan, data_jabatan: data_jabatan, data_pelajaran: data_pelajaran})
     } catch(e) {
       console.log(e)
       session.flash('errors', e)

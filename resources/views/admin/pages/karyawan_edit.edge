@@ -30,7 +30,7 @@
                   <div class="col-md-6 mb-4">
                     <h6>Jabatan</h6>
                     <fieldset class="form-group">
-                      <select class="form-select" id="basicSelect">
+                      <select class="form-select" id="basicSelect" required>
                         <option value="{{ data.j_id }}">{{ data.nama_jabatan }}</option>
                         @each(item in data_jabatan)
                           <option value="{{ item.id }}">{{ item.nama_jabatan }}</option>
@@ -41,7 +41,7 @@
                   <div class="col-md-6 mb-4">
                     <h6>Mata Pelajaran Utama</h6>
                     <fieldset class="form-group">
-                      <select class="form-select" id="basicSelect">
+                      <select class="form-select" id="basicSelect" required>
                         <option value="{{ data.m_id }}">{{ data.nama_pelajaran }}</option>
                         @each(items in data_pelajaran)
                           <option value="{{ items.id }}">{{ items.nama_pelajaran }}</option>
@@ -52,19 +52,19 @@
                   <div class="col-md-12 col-12">
                     <div class="form-group">
                       <label for="first-name-column">Nama Depan</label>
-                      <input type="text" id="first-name-column" class="form-control" value="{{ data.nama_depan }}" name="nama_depan">
+                      <input type="text" id="first-name-column" class="form-control" value="{{ data.nama_depan }}" name="nama_depan" required>
                     </div>
                   </div>
                   <div class="col-md-12 col-12">
                     <div class="form-group">
                       <label for="first-name-column">Nama Belakang</label>
-                      <input type="text" id="first-name-column" class="form-control" value="{{ data.nama_belakang }}" name="nama_belakang">
+                      <input type="text" id="first-name-column" class="form-control" value="{{ data.nama_belakang }}" name="nama_belakang" required>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <h6>Jenis Kelamin</h6>
                     <fieldset class="form-group">
-                      <select class="form-select" name="jenis_kelamin" id="basicSelect">
+                      <select class="form-select" name="jenis_kelamin" id="basicSelect" required>
                         <option>Pilih Sesuatu...</option>
                         <option value="Laki - Laki">Laki - Laki</option>
                         <option value="Perempuan">Perempuan</option>
@@ -74,7 +74,7 @@
                   <div class="col-md-12 col-12">
                     <div class="form-group">
                       <label for="formFile" class="form-label">Foto</label>
-                      <input class="form-control" name="gambar" type="file" id="formFile">
+                      <input class="form-control" name="gambar" type="file" id="formFile" required>
                     </div>
                   </div>
                   <div class="col-12 d-flex justify-content-end">

@@ -30,13 +30,13 @@
                   <div class="col-md-6 col-12">
                     <div class="form-group">
                       <label for="first-name-column">Judul Blog</label>
-                      <input type="text" id="first-name-column" class="form-control" value="{{ data.judul }}" name="title">
+                      <input type="text" id="first-name-column" class="form-control" value="{{ data.judul }}" name="title" required>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <h6>Kategori</h6>
                     <fieldset class="form-group">
-                      <select class="form-select" id="basicSelect" name="category_id">
+                      <select class="form-select" id="basicSelect" name="category_id" required>
                         <option value="{{ data.id }}">Pilih Kategori...</option>
                         @each(item in data_category)
                           <option value="{{ item.id }}">{{ item.category_name }}</option>

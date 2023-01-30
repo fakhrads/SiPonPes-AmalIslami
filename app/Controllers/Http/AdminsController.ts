@@ -1,14 +1,15 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database'
+import User from 'App/Models/User'
 import Website from 'App/Models/Website'
 
 export default class AdminsController {
-  public async index({ view }: HttpContextContract) {
+  public async index({ view, auth }: HttpContextContract) {
     const data_karyawan = await Database.from("karyawan").count('* as total')
     const data_prestasi = await Database.from("prestasis").count('*  as total')
     const data_blog = await Database.from("blogs").count('*  as total')
-    console.log(data_karyawan)
-    return view.render('admin/home', { data_karyawan: data_karyawan, data_prestasi: data_prestasi, data_blog: data_blog })
+    const user = await User.findOrFail(auth.use('web').user!.id)
+    return view.render('admin/home', { user: user, data_karyawan: data_karyawan, data_prestasi: data_prestasi, data_blog: data_blog })
   }
 
   public async editWebsite({ view }: HttpContextContract) {
