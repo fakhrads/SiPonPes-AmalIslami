@@ -1,10 +1,15 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Database from '@ioc:Adonis/Lucid/Database'
 import Blog from 'App/Models/Blog'
 import BlogCategory from 'App/Models/BlogCategory'
 
 export default class BlogsController {
   public async index({ view }: HttpContextContract) {
-    const data = await Blog.all()
+    const data = await Database
+                        .from('blogs')
+                        .select('blogs.id','blogs.photo_path','blogs.judul','blogs.content','blogs.created_at','blog_categories.category_name')
+                        .innerJoin('blog_categories','blogs.category_id','blog_categories.id')
+                        .limit(4)
     return view.render('admin/pages/blog', { data: data})
   }
 
