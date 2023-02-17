@@ -1,14 +1,5 @@
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/login', async ({ view, auth, response }) => {
-    await auth.use('web').authenticate()
-    
-    if (auth.use('web').isAuthenticated == true) {
-      response.redirect().back()
-    } else {
-      return view.render('admin/pages/auth/login')
-    }
-})
 
 Route.get('/', 'WebsitesController.index').as('default')
 Route.get('/galeri', 'WebsitesController.gallery').as('gallery')
