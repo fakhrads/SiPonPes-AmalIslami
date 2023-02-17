@@ -19,7 +19,7 @@ Route
 
     Route.get('/karyawan', 'StaffController.index').as('admin_staff').middleware(['auth', 'is_op'])
     Route.get('/karyawan/new', 'StaffController.create').as('admin_staff_new').middleware(['auth', 'is_op'])
-    Route.post('/karyawan/store', 'StaffController.store').as('admin_staff_store').middleware(['auth', 'is_op'])
+    Route.post('/karyawan/store', 'StaffController.store').as('admin_staff_store').middleware(['auth'])
     Route.get('/karyawan/edit/:id', 'StaffController.edit').as('admin_staff_edit').middleware(['auth', 'is_op'])
     Route.post('/karyawan/delete', 'StaffController.destroy').as('admin_staff_delete').middleware(['auth', 'is_op'])
     Route.post('/karyawan/update', 'StaffController.update').as('admin_staff_update').middleware(['auth', 'is_op'])
@@ -33,21 +33,21 @@ Route
 
     Route.get('/position', 'PositionsController.index').as('admin_position').middleware(['auth', 'is_op'])  
     Route.get('/position/new', 'PositionsController.create').as('admin_position_create').middleware(['auth', 'is_op'])    
-    Route.post('/position/new/store', 'PositionsController.store').as('admin_position_store').middleware(['auth', 'is_op'])    
+    Route.post('/position/new/store', 'PositionsController.store').as('admin_position_store').middleware(['auth'])    
     Route.post('/position/delete', 'PositionsController.destroy').as('admin_position_delete').middleware(['auth', 'is_op'])    
     Route.get('/position/edit/:id', 'PositionsController.edit').as('admin_position_edit').middleware(['auth', 'is_op'])    
     Route.post('/position/edit/update', 'PositionsController.update').as('admin_position_update').middleware(['auth', 'is_op'])    
     
     Route.get('/subjects', 'SubjectsController.index').as('admin_subjects').middleware(['auth', 'is_op'])  
     Route.get('/subjects/new', 'SubjectsController.create').as('admin_subjects_create').middleware(['auth', 'is_op'])    
-    Route.post('/subjects/new/store', 'SubjectsController.store').as('admin_subjects_store').middleware(['auth', 'is_op'])    
+    Route.post('/subjects/new/store', 'SubjectsController.store').as('admin_subjects_store').middleware(['auth'])    
     Route.post('/subjects/delete', 'SubjectsController.destroy').as('admin_subjects_delete').middleware(['auth', 'is_op'])    
     Route.get('/subjects/edit/:id', 'SubjectsController.edit').as('admin_subjects_edit').middleware(['auth', 'is_op'])    
     Route.post('/subjects/edit/update', 'SubjectsController.update').as('admin_subjects_update').middleware(['auth', 'is_op'])    
     
     Route.get('/event', 'EventsController.index').as('admin_events').middleware(['auth', 'is_op'])  
     Route.get('/event/new', 'EventsController.create').as('admin_events_create').middleware(['auth', 'is_op'])    
-    Route.post('/event/new/store', 'EventsController.store').as('admin_events_store').middleware(['auth', 'is_op'])    
+    Route.post('/event/new/store', 'EventsController.store').as('admin_events_store').middleware(['auth'])    
     Route.post('/event/delete', 'EventsController.destroy').as('admin_events_delete').middleware(['auth', 'is_op'])    
     Route.get('/event/edit/:id', 'EventsController.edit').as('admin_events_edit').middleware(['auth', 'is_op'])    
     Route.post('/event/edit/update', 'EventsController.update').as('admin_events_update').middleware(['auth', 'is_op'])    

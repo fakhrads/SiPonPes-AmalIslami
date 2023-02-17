@@ -15,9 +15,9 @@ export default class SubjectsController {
     const nama_pelajaran = request.input('nama_pelajaran')
     try {
       await MataPelajaran.create({
-        nama_pelajaran: nama_pelajaran,
+        nama_pelajaran: nama_pelajaran
       })
-      session.flash('success','Data Mata Pelajaran Berhasil Ditambah')
+      session.flash('success','Data berhasil di tambah!')
       return response.redirect().back()
     } catch(e) {
       session.flash('errors', e)
