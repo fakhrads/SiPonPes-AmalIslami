@@ -19,7 +19,6 @@ export default class WebsitesController {
     const data_gallery = await Database
                                 .from('galleries')
                                 .select('*')
-                                .limit(10)
                                 .orderBy('id','asc')
 
     return view.render('home/gallery', { data: data_gallery})

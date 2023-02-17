@@ -1,7 +1,14 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 export default class UsersController {
-  public async index({ view }: HttpContextContract) {
-    return view.render('admin/pages/auth/login')
+  public async index({ view, auth, response}: HttpContextContract) {
+    await auth.use('web').authenticate()
+    
+    if (auth.use('web').isAuthenticated == true) {
+      response.redirect().back()
+    } else {
+      return view.render('admin/pages/auth/login')
+    }
+
   }
 
   public async create({}: HttpContextContract) {}
