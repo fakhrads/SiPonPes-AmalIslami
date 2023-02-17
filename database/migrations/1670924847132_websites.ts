@@ -10,7 +10,7 @@ export default class extends BaseSchema {
       table.string('sejarah')
       table.string('visi')
       table.string('misi')
-      table.string('sambutan_ketua_yayasan')
+      table.text('sambutan_ketua_yayasan','longtext')
       table.string('photo_slide_satu')
       table.string('photo_slide_dua')
       table.string('photo_slide_tiga')

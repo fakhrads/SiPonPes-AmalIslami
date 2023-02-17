@@ -18,7 +18,7 @@ export default class extends BaseSchema {
         .onDelete('CASCADE') 
       table.string('photo_path').nullable()
       table.string('judul')
-      table.text('content')
+      table.text('content','longtext')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

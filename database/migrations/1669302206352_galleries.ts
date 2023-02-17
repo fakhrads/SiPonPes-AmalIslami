@@ -12,7 +12,7 @@ export default class extends BaseSchema {
         .references('users.id')
         .onDelete('CASCADE') 
       table.string('nama_kegiatan').notNullable()
-      table.string('deskripsi').notNullable()
+      table.text('deskripsi','longtext').notNullable()
       table.string('photo_path').notNullable()
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })

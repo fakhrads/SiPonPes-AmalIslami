@@ -12,7 +12,7 @@ export default class extends BaseSchema {
         .references('users.id')
         .onDelete('CASCADE') 
       table.string('title')
-      table.string('description')
+      table.text('description','longtext')
       table.string('photo_path')
       table.enu('from',['MA','MTS','SMK'])
 
