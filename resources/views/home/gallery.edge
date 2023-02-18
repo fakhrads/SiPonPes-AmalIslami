@@ -11,25 +11,46 @@
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-col text-center w-full mb-20">
-      <h1 class="sm:text-3xl text-6xl font-bold title-font mb-4 text-gray-900">Galeri Foto</h1>
-      <p class="lg:w-2/3 mx-auto text-3xl leading-relaxed">Lihat galeri foto yayasan kami.</p>
+      <h1 class="sm:text-3xl text-4xl font-bold title-font mb-4 text-gray-900">Galeri Foto</h1>
+      <p class="lg:w-2/3 mx-auto text-2xl leading-relaxed">Lihat galeri foto yayasan kami.</p>
     </div>
-    <div class="flex flex-wrap gap-9  mx-auto">
-      @each(item in data)
-        <div class="max-w-md bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 h-fit dark:border-gray-700">
-            
-                <img class="rounded-t-lg" src="/uploads/photo_gallery/{{ item.photo_path }}" alt="" />
-            
-            <div class="p-5">
+
+    <div class="container my-12 mx-auto px-4 md:px-12">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+
+        @each(item in data)
+        <!-- Column -->
+        <div class="my-2 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg shadow-lg">
+
                 <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ item.nama_kegiatan }}</h5>
+                    <img alt="Placeholder" class="block h-auto w-full" src="/uploads/photo_gallery/{{ item.photo_path }}">
                 </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-3 hover:line-clamp-none">{{ item.deskripsi }}</p>
-            </div>
+
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <p class="no-underline hover:underline text-black">
+                            {{ item.nama_kegiatan }}
+                        </p>
+                    </h1>
+                </header>
+
+                <footer class="p-2 md:p-4">
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-3 hover:line-clamp-none" align="justify">{{ item.deskripsi }}</p>
+
+                </footer>
+
+            </article>
+            <!-- END Article -->
+
         </div>
-      @end
+        <!-- END Column -->
+        @end
+
     </div>
-  </div>
+</div>
 </section>
 @end
 
