@@ -56,7 +56,7 @@ export default class WebsitesController {
   }
 
   public async kalender({ view }: HttpContextContract) {
-    const data_kalender = await Event.query().limit(5)
+    const data_kalender = await Event.all()
     return view.render('home/kalender', { data: data_kalender })
   }
 

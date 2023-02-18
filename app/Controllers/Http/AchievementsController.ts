@@ -62,14 +62,14 @@ export default class AchievementsController {
           update.description = deskripsi
           update.photo_path = photo_path.fileName!
           await update.save()
-          session.flash('success','Data Prestasi Berhasil Diperbaharui!')
+          session.flash('success','Data Prestasi Berhasil Diubah!')
           response.redirect().back()
         } else {
           const update = await Prestasi.findOrFail(id)
           update.title = judul
           update.description = deskripsi
           await update.save()
-          session.flash('success','Data Prestasi Berhasil Diperbaharui!')
+          session.flash('success','Data Prestasi Berhasil Diubah!')
           response.redirect().back()
         }
       } catch (e) {
