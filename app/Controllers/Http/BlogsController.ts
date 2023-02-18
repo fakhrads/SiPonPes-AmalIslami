@@ -9,7 +9,6 @@ export default class BlogsController {
                         .from('blogs')
                         .select('blogs.id','blogs.photo_path','blogs.judul','blogs.content','blogs.created_at','blog_categories.category_name')
                         .innerJoin('blog_categories','blogs.category_id','blog_categories.id')
-                        .limit(4)
     return view.render('admin/pages/blog', { data: data})
   }
 

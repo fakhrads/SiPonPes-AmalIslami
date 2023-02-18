@@ -7,13 +7,13 @@ export default class extends BaseSeeder {
       {
         nama: 'Admin Yayasan',
         email: 'operator.amalislami@gmail.com',
-        password: '89o7igultsdgnjkl',
+        password: 'Op15islami',
         level: "Operator",
       },
       {
         nama: 'TU',
         email: 'tu.amalislami@gmail.com',
-        password: '90np8yahfbsedofa',
+        password: 'Tu15Islami',
         level: "TU",
       },
       {

@@ -34,14 +34,14 @@
                   </div>
                   <div class="col-md-12 col-12">
                     <div class="form-group">
-                      <label for="first-name-column">Tanggal Mulai Kegiatan</label>
-                      <input type="date" id="first-name-column" class="form-control" placeholder="Tanggal Mulai" name="tanggal_mulai" required>
+                      <label for="tanggal-mulai">Tanggal Mulai Kegiatan</label>
+                      <input type="date" id="tanggal-mulai" class="form-control" value="" min="{{ new Date(Date.now()).toISOString().split('T')[0] }}" name="tanggal_mulai" required>
                     </div>
                   </div>
                   <div class="col-md-12 col-12">
                     <div class="form-group">
-                      <label for="first-name-column">Tanggal Selesai Kegiatan</label>
-                      <input type="date" id="first-name-column" class="form-control" placeholder="Tanggal Selesai" name="tanggal_selesai" required>
+                      <label for="tanggal-selesai">Tanggal Selesai Kegiatan</label>
+                      <input type="date" id="tanggal-selesai" class="form-control" value="" min="" name="tanggal_selesai" required>
                     </div>
                   </div>
                   <div class="col-12 d-flex justify-content-end">
@@ -63,5 +63,15 @@
 @end
 
 @section('custom-js')
+<script>
+  // Ambil elemen input date
+  const inputTanggal = document.getElementById('tanggal-mulai');
+  const inputTanggal2 = document.getElementById('tanggal-selesai');
 
+  // Set tanggal minimal ke tanggal saat ini
+  inputTanggal.addEventListener('change', function() {
+    console.log('Nilai input berubah menjadi: ', inputTanggal.value);
+    inputTanggal2.min = inputTanggal.value;
+  });
+</script>
 @end

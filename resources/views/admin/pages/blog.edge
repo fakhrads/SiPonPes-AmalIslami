@@ -4,7 +4,11 @@
 @set('pageHeader','Kelola Data Berita Blog')
 
 @section('custom-css')
-
+    <link
+      rel="stylesheet"
+      href="/asset/extensions/simple-datatables/style.css"
+    />
+    <link rel="stylesheet" href="/asset/css/pages/simple-datatables.css" />
 @end
 
 @section('content')
@@ -33,9 +37,9 @@
             </tr>
           </thead>
           <tbody>
-            @each(item in data)
+            @each((item, index) in data)
               <tr>
-                <td>{{ item.id }}</td>
+                <td>{{ index + 1 }}</td>
                 <td><img height="50" width="50" src="/uploads/photo_blog/{{ item.photo_path }}"></img></td>
                 <td>{{ item.judul}}</td>
                 <td>{{ item.category_name}}</td>
@@ -59,5 +63,8 @@
 @end
 
 @section('custom-js')
+
+    <script src="/asset/extensions/simple-datatables/umd/simple-datatables.js"></script>
+    <script src="/asset/js/pages/simple-datatables.js"></script>
 
 @end

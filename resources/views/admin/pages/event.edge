@@ -31,9 +31,9 @@
             </tr>
           </thead>
           <tbody>
-            @each(k in data)
+            @each((k, index) in data)
             <tr>
-              <td>{{ k.id }}</td>
+              <td>{{ index + 1 }}</td>
               <td>{{ k.judul }}</td>
               <td>{{ k.tanggal_mulai }}</td>
               <td>{{ k.tanggal_selesai }}</td>
