@@ -8,8 +8,14 @@ module.exports = {
   theme: {
     extend: {},
   },
+  variants: {
+    extend: {
+      lineClamp: ['hover']
+    }
+  },
   plugins: [
     require('flowbite/plugin'),
+    require('@tailwindcss/line-clamp'),
     require('tw-elements/dist/plugin')
   ],
 }

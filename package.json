@@ -38,6 +38,7 @@
     "@adonisjs/session": "^6.2.0",
     "@adonisjs/shield": "^7.0.0",
     "@adonisjs/view": "^6.1.0",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "flowbite": "^1.5.4",
     "luxon": "^3.0.4",
     "mysql2": "^2.3.3",

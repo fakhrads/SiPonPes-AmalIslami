@@ -63,7 +63,7 @@ export default class BlogsController {
         blog.judul = title
         blog.category_id = category_id
         blog.content = content
-        blog.photo_path = photo_path.fieldName
+        blog.photo_path = photo_path.fileName!
       } else {
         blog.judul = title
         blog.category_id = category_id

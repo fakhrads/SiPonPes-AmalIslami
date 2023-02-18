@@ -61,7 +61,7 @@ export default class WebsitesController {
   }
 
   public async prestasi({ view }: HttpContextContract) {
-    const data_prestasi = await Prestasi.query().limit(5)
+    const data_prestasi = await Prestasi.all()
     return view.render('home/prestasi', { data: data_prestasi })
   }
 

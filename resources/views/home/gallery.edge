@@ -16,14 +16,16 @@
     </div>
     <div class="flex flex-wrap -m-4">
       @each(item in data)
-        <div class="lg:w-1/3 sm:w-1/2 p-4 ">
-          <div class="flex relative shadow-md rounded-xl">
-            <img alt="gallery" height="50" class="absolute rounded-xl inset-0 w-full h-full object-cover object-center" src="/uploads/photo_gallery/{{ item.photo_path }}">
-            <div class="px-8 py-10 relative rounded-xl z-10 w-full border-2 border-green-200 bg-white opacity-0 hover:opacity-100">
-              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{ item.nama_kegiatan }}</h1>
-              <p class="leading-relaxed">{{ item.deskripsi }}.</p>
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 h-fit dark:border-gray-700">
+            <a href="#">
+                <img class="rounded-t-lg" src="/uploads/photo_gallery/{{ item.photo_path }}" alt="" />
+            </a>
+            <div class="p-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ item.nama_kegiatan }}</h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-3 hover:line-clamp-none">{{ item.deskripsi }}</p>
             </div>
-          </div>
         </div>
       @end
     </div>
