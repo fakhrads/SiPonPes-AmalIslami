@@ -14,12 +14,12 @@
       <h1 class="sm:text-3xl text-6xl font-bold title-font mb-4 text-gray-900">Galeri Foto</h1>
       <p class="lg:w-2/3 mx-auto text-3xl leading-relaxed">Lihat galeri foto yayasan kami.</p>
     </div>
-    <div class="flex flex-wrap -m-4">
+    <div class="flex flex-wrap gap-9  mx-auto">
       @each(item in data)
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 h-fit dark:border-gray-700">
-            <a href="#">
+        <div class="max-w-md bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 h-fit dark:border-gray-700">
+            
                 <img class="rounded-t-lg" src="/uploads/photo_gallery/{{ item.photo_path }}" alt="" />
-            </a>
+            
             <div class="p-5">
                 <a href="#">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ item.nama_kegiatan }}</h5>
