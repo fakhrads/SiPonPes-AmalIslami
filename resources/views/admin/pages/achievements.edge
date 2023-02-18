@@ -37,9 +37,9 @@
             </tr>
           </thead>
           <tbody>
-            @each(item in data)
+            @each((item, index) in data)
               <tr>
-                <td>{{ item.id }}</td>
+                <td>{{ index + 1 }}</td>
                 <td>
                   <img class="rounded" style="width: 150px; height: 150px;" src="/uploads/photo_prestasi/{{ item.photo_path }}">
                 </td>
