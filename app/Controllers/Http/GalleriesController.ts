@@ -49,7 +49,7 @@ export default class GalleriesController {
     const title = request.input('title')
     const content = request.input('content')
     const photo_path = request.file('photo', {
-      size: '2mb',
+      size: '25mb',
       extnames: ['jpg', 'png', 'gif'],
     })!
 
@@ -61,14 +61,14 @@ export default class GalleriesController {
         data_gallery.deskripsi = content
         data_gallery.photo_path = photo_path.fileName!
         data_gallery.save()
-        session.flash('success','Data berhasil dirubah!')
+        session.flash('success','Data berhasil diubah!')
         response.redirect().back()
       } else {
         const data_gallery = await Gallery.findOrFail(id)
         data_gallery.nama_kegiatan = title
         data_gallery.deskripsi = content
         data_gallery.save()
-        session.flash('success','Data berhasil dirubah!')
+        session.flash('success','Data berhasil diubah!')
         response.redirect().back()
       }
     } catch (e) {

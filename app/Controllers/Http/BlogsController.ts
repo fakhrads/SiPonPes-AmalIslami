@@ -52,7 +52,7 @@ export default class BlogsController {
     const content = request.input('content')
     const category_id = request.input('category_id')
     const photo_path = request.file('photo', {
-      size: '2mb',
+      size: '25mb',
       extnames: ['jpg', 'png', 'gif'],
     })
 

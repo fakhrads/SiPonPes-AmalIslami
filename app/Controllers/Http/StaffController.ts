@@ -87,10 +87,9 @@ export default class StaffController {
     const nama_belakang = request.input('nama_belakang')
     const jenis_kelamin = request.input('jenis_kelamin')
     const photo_path = request.file('gambar', {
-      size: '2mb',
+      size: '25mb',
       extnames: ['jpg', 'png', 'gif'],
     })!
-
 
     try {
       if (photo_path) {

@@ -23,22 +23,22 @@ export default class AdminsController {
     const misi = request.input('misi')
     const sambutan_ketua_yayasan = request.input('sambutan_ketua_yayasan')
     const photo_ketua_yayasan = request.file('photo_ketua_yayasan', {
-      size: '2mb',
+      size: '25mb',
       extnames: ['jpg', 'png', 'gif'],
     })!
     
     const photo_slide_satu = request.file('photo_slide_satu', {
-      size: '2mb',
+      size: '25mb',
       extnames: ['jpg', 'png', 'gif'],
     })!
     
     const photo_slide_dua = request.file('photo_slide_dua', {
-      size: '2mb',
+      size: '25mb',
       extnames: ['jpg', 'png', 'gif'],
     })!
     
     const photo_slide_tiga = request.file('photo_slide_tiga', {
-      size: '2mb',
+      size: '25mb',
       extnames: ['jpg', 'png', 'gif'],
     })!
 

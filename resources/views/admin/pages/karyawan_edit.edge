@@ -24,7 +24,7 @@
               @if(flashMessages.has('success'))
                 <div class="alert alert-success">{{ flashMessages.get('success') }}</div>
               @endif
-              <form class="form" method="POST" action="{{ route('admin_staff_update') }}">
+              <form class="form" method="POST" enctype="multipart/form-data" action="{{ route('admin_staff_update') }}">
                   <input type="hidden" name="id" value="{{ data.k_id }}">
                   <div class="row">
                   <div class="col-md-6 mb-4">
